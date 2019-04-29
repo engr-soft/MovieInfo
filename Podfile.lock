@@ -1,0 +1,33 @@
+PODS:
+  - Kingfisher (5.4.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - StretchHeader (1.1.0)
+  - YoutubePlayer-in-WKWebView (0.2.5)
+
+DEPENDENCIES:
+  - Kingfisher
+  - RxCocoa
+  - RxSwift
+  - StretchHeader
+  - YoutubePlayer-in-WKWebView (~> 0.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
+    - RxCocoa
+    - RxSwift
+    - StretchHeader
+    - YoutubePlayer-in-WKWebView
+
+SPEC CHECKSUMS:
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  StretchHeader: 2ae5ef71f07fc7a9e7d9faec69a3b630f0c4383f
+  YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
+
+PODFILE CHECKSUM: 798fa7665b81bd30ba612d93d97ed03a3d7c64e4
+
+COCOAPODS: 1.6.1
