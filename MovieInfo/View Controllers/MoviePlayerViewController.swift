@@ -49,6 +49,10 @@ extension MoviePlayerViewController:WKYTPlayerViewDelegate{
             self.dismiss(animated: true) {
             }
         }
+        else if state == .paused && UIDevice.current.userInterfaceIdiom == .phone{
+            self.dismiss(animated: true) {
+            }
+        }
         
     }
     func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
