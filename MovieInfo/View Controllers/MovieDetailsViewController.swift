@@ -30,7 +30,7 @@ class MovieDetailsViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.register(UINib(nibName: "MovieDetailsCell", bundle: nil), forCellReuseIdentifier: "MovieDetailsCell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -45,6 +45,17 @@ class MovieDetailsViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         setupHeaderView()
         fetchUIDataFromService()
+        
+        if let movieDetailCellViewViewModel = movieDetailCellViewViewModel{
+            
+            movieDetailCellViewViewModel.shouldOpenTrailerWithVideoKey.drive(onNext: {[unowned self] (videoKey) in
+                if let key = videoKey {
+                    self.performSegue(withIdentifier: StoryBoardConstants.segueShowPlayer.rawValue, sender: key)
+                }
+                
+            }).disposed(by: disposeBag)
+        }
+        
     }
     
     
@@ -57,9 +68,9 @@ class MovieDetailsViewController: UIViewController {
                                  imageSize: CGSize(width: view.frame.size.width, height: 220),
                                  controller: self,
                                  options: options)
-
         
-       
+        
+        
         
         // custom
         titleLabel = UILabel()
@@ -102,6 +113,17 @@ class MovieDetailsViewController: UIViewController {
             self.infoLabel.isHidden = !movieDetailCellViewViewModel.hasError
             self.infoLabel.text = error
         }).disposed(by: disposeBag)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let segueID = segue.identifier, segueID == StoryBoardConstants.segueShowPlayer.rawValue{
+            if let vc = segue.destination as? MoviePlayerViewController{
+                if let sender = sender, let videoKey = sender as? String{
+                    
+                        vc.videoKey = videoKey
+                    }
+                
+            }
+        }
     }
 }
 

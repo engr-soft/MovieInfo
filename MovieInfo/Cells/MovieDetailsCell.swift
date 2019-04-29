@@ -13,20 +13,18 @@ class MovieDetailsCell: UITableViewCell {
     var viewModel:MovieDetailCellViewViewModel?
     @IBOutlet weak var watchTrailerButton: UIButton!
     @IBAction func watchTrailerButtonAction(_ sender: Any) {
-        guard let viewModel = viewModel, let url = viewModel.trailerURL else {
+        guard let viewModel = viewModel else {
             return
         }
     
        
-        
-//        let playerVC:UIViewController = UIStoryboard(name: StoryBoardConstants.MainStoryBoard.rawValue, bundle: nil).instantiateViewController(withIdentifier: "MoviePlayerViewController") as! MoviePlayerViewController
-//     viewModel.trailerURL
+        viewModel.shouldPlayTrailerVideo()
         
         
-        if let topVC = UIApplication.getTopMostViewController() {
-                let svc = SFSafariViewController(url: url)
-                topVC.present(svc, animated: true, completion: nil)
-        }
+//        if let topVC = UIApplication.getTopMostViewController() {
+//                let svc = SFSafariViewController(url: url)
+//                topVC.present(svc, animated: true, completion: nil)
+//        }
         
     }
     @IBOutlet weak var ratingLabel: UILabel!

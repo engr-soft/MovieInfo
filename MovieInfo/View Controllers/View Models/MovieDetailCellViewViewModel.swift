@@ -15,6 +15,11 @@ struct MovieDetailCellViewViewModel {
     private let _movie = BehaviorRelay<Movie?>(value:nil)
     private let _isFetching = BehaviorRelay<Bool>(value: false)
     private let _error = BehaviorRelay<String?>(value: nil)
+    private let _shouldOpenTrailerWithVideoKey = BehaviorRelay<String?>(value: nil)
+    
+    var shouldOpenTrailerWithVideoKey: Driver<String?> {
+        return _shouldOpenTrailerWithVideoKey.asDriver()
+    }
     
     var isFetching: Driver<Bool> {
         return _isFetching.asDriver()
@@ -75,6 +80,17 @@ struct MovieDetailCellViewViewModel {
         }
         return nil
     }
+    var trailerYoutubeKey: String? {
+        guard let thisMovie = _movie.value, let videos = thisMovie.videos else {
+            return nil
+        }
+        for movieVideo in videos.results{
+            if let youtubeKey = movieVideo.youtubeKey{
+                return youtubeKey
+            }
+        }
+        return nil
+    }
     
     var overview: String {
         guard let thisMovie = _movie.value else {
@@ -126,7 +142,12 @@ struct MovieDetailCellViewViewModel {
         }
     }
     
-    
+    public func shouldPlayTrailerVideo() {
+
+        if let key = trailerYoutubeKey{
+            self._shouldOpenTrailerWithVideoKey.accept(key)
+        }
+    }
     
 /*    func fetchVideos() {
         BackendServices.shared.fetchVideos(movieId: Int , successHandler: {[weak self] (response) in

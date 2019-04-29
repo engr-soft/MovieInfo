@@ -9,15 +9,28 @@
 import UIKit
 import YoutubePlayer_in_WKWebView
 class MoviePlayerViewController: UIViewController {
+    var videoKey:String?
     @IBOutlet var playerView: WKYTPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerView.load(withVideoId: "Mc0TMWYTU_k")
+        
+        playerView.delegate = self
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let key = videoKey{
+            playerView.load(withVideoId: key) //"Mc0TMWYTU_k"
 
+        }
+        else{
+            self.dismiss(animated: true) {
+                
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -28,4 +41,17 @@ class MoviePlayerViewController: UIViewController {
     }
     */
 
+}
+extension MoviePlayerViewController:WKYTPlayerViewDelegate{
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
+        
+        if state == .ended{
+            self.dismiss(animated: true) {
+            }
+        }
+        
+    }
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+        playerView.playVideo()
+    }
 }

@@ -67,6 +67,13 @@ public struct MovieVideo: Codable {
         }
         return URL(string: "https://www.youtube.com/watch?v=\(key)")
     }
+    
+    public var youtubeKey: String? {
+        guard site == "YouTube" else {
+            return nil
+        }
+        return key
+    }
 }
 
 public struct MovieCreditResponse: Codable {

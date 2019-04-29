@@ -94,7 +94,6 @@
                         <outlet property="infoLabel" destination="NiL-Uq-0bV" id="bcs-wp-20c"/>
                         <outlet property="tableView" destination="3x9-A7-gpU" id="rYh-uw-psx"/>
                         <segue destination="tJZ-nZ-fgs" kind="show" identifier="show_movie_detail" id="Ph0-ra-psy"/>
-                        <segue destination="8Cb-BK-5BV" kind="presentation" identifier="show_player" id="qc1-Hp-hWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngZ-Pk-j1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,6 +145,7 @@
                         <outlet property="activityIndicatorView" destination="8BL-4I-2CA" id="f2o-Mu-XuT"/>
                         <outlet property="infoLabel" destination="ha8-jO-qRg" id="muM-jk-cWV"/>
                         <outlet property="tableView" destination="6qB-dw-CzC" id="trU-VX-X7i"/>
+                        <segue destination="8Cb-BK-5BV" kind="presentation" identifier="show_player" id="Ree-XB-hGP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfL-0Z-lWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
